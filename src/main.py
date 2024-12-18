@@ -69,6 +69,16 @@ class CalculatorApp(ft.Container):
                 ft.Row(
                     expand=True,
                     controls=[
+                        ActionButton(
+                            text="π", button_clicked=self.button_clicked, action="pi"),
+                        ActionButton(
+                            text="e", button_clicked=self.button_clicked, action="exp"),
+                        
+                    ]
+                ),
+                ft.Row(
+                    expand=True,
+                    controls=[
                         DigitButton(
                             text="7", button_clicked=self.button_clicked, value=7),
                         DigitButton(
@@ -216,6 +226,18 @@ class CalculatorApp(ft.Container):
             self.result.value = str(
                 self.format_number(
                     1/float(self.result.value)
+                )
+            )
+        elif action =="pi":
+            self.result.value = str(
+                self.format_number(
+                    3.141592653589793
+                )
+            )
+        elif action =="exp":
+            self.result.value = str(
+                self.format_number(
+                    2.718281828459045
                 )
             )
         else:
