@@ -60,7 +60,10 @@ class CalculatorApp(ft.Container):
                             text="x^2", button_clicked=self.button_clicked, action="square"),
                         ActionButton(
                             text="x^3", button_clicked=self.button_clicked, action="cube"),
-                        
+                        ActionButton(
+                            text="x!", button_clicked=self.button_clicked, action="factorial"),
+                        ActionButton(
+                            text="1/x", button_clicked=self.button_clicked, action="1/x"),
                     ]
                 ),
                 ft.Row(
@@ -200,7 +203,21 @@ class CalculatorApp(ft.Container):
                     float(self.result.value)*float(self.result.value)*float(self.result.value)
                 )
             ) 
-        
+        elif action == "factorial":
+            temp=1
+            for i in range(1,int(self.result.value)+1):
+                temp*=i
+            self.result.value = str(
+                self.format_number(
+                    temp
+                )
+            )
+        elif action =="1/x":
+            self.result.value = str(
+                self.format_number(
+                    1/float(self.result.value)
+                )
+            )
         else:
             raise ValueError("Invalid action")
 
